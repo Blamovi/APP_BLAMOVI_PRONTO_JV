@@ -1,0 +1,40 @@
+package com.example.blamovi.views
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.blamovi.R
+import com.example.blamovi.databinding.FragmentListaFilmesBinding
+
+class ListaFilmesFragment : Fragment() {
+
+    private var _binding: FragmentListaFilmesBinding? = null
+
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+
+        _binding = FragmentListaFilmesBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        binding.cardTop1.setOnClickListener{
+            findNavController().navigate(R.id.nav_filmes_informacoes)
+        }
+
+        return root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}
